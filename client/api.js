@@ -1,21 +1,21 @@
 import request from 'superagent'
 
-const widgetUrl = 'http://localhost:3000/api/v1/widgets'
+const dataUrl = 'http://localhost:3000/api/v1/mapData'
 
-export function getWidgets (callback) {
+export function getChallenges (callback) {
   request
-    .get(widgetUrl)
+    .get(dataUrl)
     .end((err, res) => {
       callback(err, res.body)
     })
 }
 
-export function appendWidget (widget, callback) {
-  request
-    .post(widgetUrl)
-    .send(widget)
-    .end((err, res) => {
-      callback(err)
-    })
-}
+// export function appendWidget (widget, callback) {
+//   request
+//     .post(widgetUrl)
+//     .send(widget)
+//     .end((err, res) => {
+//       callback(err)
+//     })
+// }
 
