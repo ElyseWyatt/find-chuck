@@ -1,5 +1,6 @@
 import React from 'react'
 import Clue from './Clue'
+import NewMap from './Map'
 import { getChallenges } from '../api.js'
 
 class App extends React.Component {
@@ -31,20 +32,17 @@ class App extends React.Component {
     this.setState({
       upcomingChallenges: upcoming
     })
-
   }
-
   componentDidMount () {
     getChallenges(this.initialiseChallenges)
   }
 
   render () {
-
     return (
       <div>
         <h1>Test</h1>
-        {/* 
-      <Map map={this.state.currentChallenge.map} /> */}
+        {/* <NewMap map={this.state.currentChallenge.map} /> */}
+        <NewMap />
         <button type='button' onClick={this.nextChallenge}>Cool Button</button>
         <Clue challenges={this.state.upcomingChallenges} />
       </div>
