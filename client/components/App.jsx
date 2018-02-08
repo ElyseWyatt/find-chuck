@@ -6,7 +6,7 @@ class App extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      currentChallenge: {},
+      upcomingChallenges: [],
       challenges: {}
     }
     this.initialiseChallenges = this.initialiseChallenges.bind(this)
@@ -14,20 +14,24 @@ class App extends React.Component {
   }
 
   initialiseChallenges (err, challengeList) {
+    const challengeListEdited = challengeList
+    let temp = challengeList.shift()
+    temp = Array(temp)
     this.setState({
       error: err,
-      challenges: challengeList || {},
-      currentChallenge: challengeList.shift()
+      challenges: challengeListEdited || {},
+      upcomingChallenges: temp
     })
   }
 
   nextChallenge () {
-    if (this.state.challenges.length > 0) {
-      this.setState({
-        currentChallenge: this.state.challenges.shift()
-      })
-    }
-    
+    const next = this.state.challenges.shift()
+    let upcoming = this.state.upcomingChallenges
+    upcoming.push(next)
+    this.setState({
+      upcomingChallenges: upcoming
+    })
+
   }
 
   componentDidMount () {
@@ -41,9 +45,8 @@ class App extends React.Component {
         <h1>Test</h1>
         {/* 
       <Map map={this.state.currentChallenge.map} /> */}
-
         <button type='button' onClick={this.nextChallenge}>Cool Button</button>
-        <Clue challenge={this.state.currentChallenge} />
+        <Clue challenges={this.state.upcomingChallenges} />
       </div>
     )
   }
