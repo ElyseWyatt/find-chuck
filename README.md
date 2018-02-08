@@ -57,3 +57,13 @@ To experience the effects of CORS:
 * Visit [http://localhost:8080](http://localhost:8080) and the site should continue to work fine.
 * Have a look at how the Express middleware uses the `cors` package in `server/server.js`. Try commenting out that line and restarting `npm start`. Refresh the app and you should see errors. Read more about how to configure the [`cors` package](https://npmjs.org/package/cors) and try different configurations.
 
+mapbox config:
+
+
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', 
+      {
+        maxZoom: 18,
+        id: 'mapbox.satellite',
+        accessToken: 'pk.eyJ1IjoidHlsZXJncmlmZmluIiwiYSI6ImNpcjQzNGVvcTAxZ2xmaW5yaXFpcDAxeTgifQ.h5kYi9Fdnemz2lqlE4Gykw'
+      }).addTo(tableMap)
+  }
