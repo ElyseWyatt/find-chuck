@@ -1,21 +1,25 @@
 import React from 'react'
-
+import Challenge from './Challenge'
 class Clue extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
-      challenges
+
     }
   }
-  componentDidMount () {
-    for (let i = 0; i< this.props.challenges.length; i++) {
-      return <
+  componentDidMount() {
+    for (let i = 0; i < this.props.challenges.length; i++) {
+      return <Challenge challenge={this.props.challenges[i]}></Challenge>
     }
   }
 
-  render () {
+  render() {
     return (
-      <h1>{this.props.challenges}</h1>
+      <h1>Hello</h1>
+      // <h1>{this.props.challenges[0].clue}</h1>
+      // <div>{this.props.challenges.map(chal => {
+      //   return <Challenge challenge={chal} />
+      // })}</div>
     )
   }
 }
