@@ -67,3 +67,135 @@ mapbox config:
         accessToken: 'pk.eyJ1IjoidHlsZXJncmlmZmluIiwiYSI6ImNpcjQzNGVvcTAxZ2xmaW5yaXFpcDAxeTgifQ.h5kYi9Fdnemz2lqlE4Gykw'
       }).addTo(tableMap)
   }
+  
+  
+  my leaflet stuff
+  
+  import React, { Component } from 'react';
+import { mapboxConfig } from '../../../../config.js';
+import 'leaflet';
+import LeafletMapWrapper from './map.style';
+
+// const blockBounds = [{
+//   "type": "Feature",
+//   "properties": {"party": "Republican"},
+//   "geometry": {
+//       "type": "Polygon",
+//       "coordinates": [[
+//           [-104.05, 48.99],
+//           [-97.22,  48.98],
+//           [-96.58,  45.94],
+//           [-104.03, 45.94],
+//           [-104.05, 48.99]
+//       ]]
+//   }
+//   }, {
+//   "type": "Feature",
+//   "properties": {"party": "Democrat"},
+//   "geometry": {
+//       "type": "Polygon",
+//       "coordinates": [[
+//           [-109.05, 41.00],
+//           [-102.06, 40.99],
+//           [-102.03, 36.99],
+//           [-109.04, 36.99],
+//           [-109.05, 41.00]
+//       ]]
+//   },
+// }]
+const blockBounds = [{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {},
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              173.11708688735962,
+              -34.84117558599725
+            ],
+            [
+              173.11583161354065,
+              -34.841739140715255
+            ],
+            [
+              173.1165826320648,
+              -34.84280460081047
+            ],
+            [
+              173.11715126037598,
+              -34.84244357868675
+            ],
+            [
+              173.11781644821167,
+              -34.84221463700732
+            ],
+            [
+              173.11708688735962,
+              -34.84117558599725
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}]
+
+class LMap extends Component {
+  constructor(props) {
+    super(props);
+    this.renderMap = this.renderMap.bind(this);
+  }
+
+
+  renderMap (element) {
+    if (!element) return;
+      const { L } = window;
+      const tableMap = L.map(element, {
+        center: [51.505, -0.09],
+        zoom: 20,
+        zoomControl: false,
+        dragging: false,
+        scrollWheelZoom: false,
+        tap: false,
+        touchZoom: false,
+        doubleClickZoom: false,
+      })
+      
+      L.geoJSON(blockBounds, {
+        style: function(feature) {
+            switch (feature.properties.party) {
+              case 'Republican': return {color: "#ff0000"};
+                case 'Democrat':   return {color: "#0000ff"};
+            }
+        },
+        onEachFeature: function (feature, layer) {
+          layer.bindPopup('<h1>' + feature.properties.party + '</h1>')
+        }
+    }).addTo(tableMap);
+
+      L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', 
+      {
+        maxZoom: 18,
+        id: 'mapbox.satellite',
+        accessToken: 'pk.eyJ1IjoidHlsZXJncmlmZmluIiwiYSI6ImNpcjQzNGVvcTAxZ2xmaW5yaXFpcDAxeTgifQ.h5kYi9Fdnemz2lqlE4Gykw'
+      }).addTo(tableMap)
+  }
+
+  render() {
+    return (
+      <LeafletMapWrapper className="isoLeafletMap">
+        <div
+          id="basic-map"
+          style={{ height: '85px', width: '100%' }}
+          ref={this.renderMap}
+        />
+      </LeafletMapWrapper>
+    );
+  }
+}
+
+export default LMap;
