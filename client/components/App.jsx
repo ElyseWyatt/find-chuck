@@ -10,13 +10,24 @@ class App extends React.Component {
       challenges: {}
     }
     this.initialiseChallenges = this.initialiseChallenges.bind(this)
+    this.nextChallenge = this.nextChallenge.bind(this)
   }
 
-  initialiseChallenges (err, challenges) {
+  initialiseChallenges (err, challengeList) {
     this.setState({
       error: err,
-      challenges: challenges || {}
+      challenges: challengeList || {},
+      currentChallenge: challengeList.shift()
     })
+  }
+
+  nextChallenge () {
+    if (this.state.challenges.length > 0) {
+      this.setState({
+        currentChallenge: this.state.challenges.shift()
+      })
+    }
+    
   }
 
   componentDidMount () {
@@ -24,8 +35,6 @@ class App extends React.Component {
   }
 
   render () {
-    // console.log(getChallenges())
-    // this.initialiseChallenges()
 
     return (
       <div>
@@ -33,8 +42,8 @@ class App extends React.Component {
         {/* 
       <Map map={this.state.currentChallenge.map} /> */}
 
-
-        <Clue challenge={this.state.challenges} />
+        <button type='button' onClick={this.nextChallenge}>Cool Button</button>
+        <Clue challenge={this.state.currentChallenge} />
       </div>
     )
   }
