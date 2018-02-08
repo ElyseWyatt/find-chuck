@@ -1,25 +1,26 @@
 import React from 'react'
 import Challenge from './Challenge'
 class Clue extends React.Component {
-  constructor(props) {
+  constructor (props) {
     super(props)
     this.state = {
 
     }
   }
-  componentDidMount() {
-    for (let i = 0; i < this.props.challenges.length; i++) {
-      return <Challenge challenge={this.props.challenges[i]}></Challenge>
-    }
-  }
 
-  render() {
+
+  render () {
+    console.log(this.props.challenges)
+    // if (!this.props.challenges[0]) {
+    //   return (<h1>Loading</h1>)
+    // }
     return (
-      <h1>Hello</h1>
-      // <h1>{this.props.challenges[0].clue}</h1>
-      // <div>{this.props.challenges.map(chal => {
-      //   return <Challenge challenge={chal} />
-      // })}</div>
+      <div>
+        <h1>Hello</h1>
+        <div>{this.props.challenges.map((clue, id) => {
+          return <Challenge key={id} challenge={clue} />
+        })}</div>
+      </div>
     )
   }
 }

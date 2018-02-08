@@ -27,7 +27,7 @@ class App extends React.Component {
   nextChallenge () {
     const next = this.state.challenges.shift()
     let upcoming = this.state.upcomingChallenges
-    upcoming.push(next)
+    upcoming.unshift(next)
     this.setState({
       upcomingChallenges: upcoming
     })
