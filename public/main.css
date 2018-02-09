@@ -1,14 +1,45 @@
-.widget-details .visible {
-  display: block;
-}
-
-.widget-details .hidden {
-  display: none;
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: pink;
 }
 
 .leaflet-container {
   height: 400px;
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
+  border-style: solid;
+  border-color: red;
+  border-width: 2px;
+
 }
 
+.page-box {
+  margin: 5% 10%;
+}
+.header {
+  font-size: 180%;
+  text-align: center;
+  font-family: 'Lobster Two', cursive;
+}
+
+.blurb {
+  text-align: center;
+  margin: 3% 20% 5% 20%;
+  font-size: 18px;
+}
+
+.hearts {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+#heart-1 {
+  height: 2.5%;
+  width: 2.5%;
+}
+
+#heart-2 {
+  height: 2.5%;
+  width: 2.5%;
+}

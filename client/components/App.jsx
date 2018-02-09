@@ -40,14 +40,26 @@ class App extends React.Component {
   render () {
     return (
       <div>
-        <h1>Test</h1>
-        {/* <NewMap map={this.state.currentChallenge.map} /> */}
-        <div id="container">
-          <NewMap />
+        <div className='hearts'>
+          <img src='http://www.pngpix.com/wp-content/uploads/2016/03/Red-Heart-PNG-image.png' id='heart-1'/>
+          <img src='http://www.pngpix.com/wp-content/uploads/2016/03/Red-Heart-PNG-image.png' id='heart-2'/>
         </div>
-        <button type='button' onClick={this.nextChallenge}>Cool Button</button>
-        <Clue challenges={this.state.upcomingChallenges} />
+        <div className='page-box'>
+          <div className='header'>
+            <h1>Find Chuck!</h1>
+          </div>
+          <div className='blurb'>
+            <p>It's nearly Valentine's Day and your valentine Chuck Norris has run off. Follow the clues, search through the map, and find Chuck!</p>
+          </div>
+          {/* <NewMap map={this.state.currentChallenge.map} /> */}
+          <div id="container">
+            <NewMap />
+          </div>
+          <button type='button' onClick={this.nextChallenge}>Cool Button</button>
+          <Clue challenges={this.state.upcomingChallenges} />
+        </div>
       </div>
+
     )
   }
 }
