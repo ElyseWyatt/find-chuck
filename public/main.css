@@ -43,3 +43,29 @@ body {
   height: 2.5%;
   width: 2.5%;
 }
+
+/* 
+Clues 
+*/
+
+.clue {
+  margin: 1%;
+  background-color: blue;
+}
+
+h3 {
+  font-family: 'Lobster Two', cursive;
+  font-size: 200%;
+}
+
+.chuck-clue {
+  margin: 0% 0% 5% 0%;
+}
+
+button {
+  background-color: red;
+  color: white;
+  padding: 10px;
+  font-style: 'Open-Sans', sans-serif;
+  font-size: 1em;
+}
