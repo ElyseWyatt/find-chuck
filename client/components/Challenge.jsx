@@ -2,7 +2,9 @@ import React from 'react'
 
 const Challenge = (props) => {
   return (
-    <h1>{props.challenge.clue}</h1>
+    <div className="clue">
+      <h2>{props.challenge.clue}</h2>
+    </div>
   )
 }
 
