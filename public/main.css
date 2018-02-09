@@ -6,3 +6,12 @@
   display: none;
 }
 
+.mapTest {
+  height: 200px;
+  width: 200px;
+}
+
+.leaftlet-container {
+  height: 200px;
+  width: 200px;
+}

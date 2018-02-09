@@ -4,7 +4,7 @@ import NewMap from './Map'
 import { getChallenges } from '../api.js'
 
 class App extends React.Component {
-  constructor (props) {
+  constructor(props) {
     super(props)
     this.state = {
       upcomingChallenges: [],
@@ -42,7 +42,9 @@ class App extends React.Component {
       <div>
         <h1>Test</h1>
         {/* <NewMap map={this.state.currentChallenge.map} /> */}
-        <NewMap />
+        <div className="mapid">
+          <NewMap />
+        </div>
         <button type='button' onClick={this.nextChallenge}>Cool Button</button>
         <Clue challenges={this.state.upcomingChallenges} />
       </div>
