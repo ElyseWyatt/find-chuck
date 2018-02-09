@@ -3,7 +3,7 @@ import Clue from './Clue'
 import NewMap from './Map'
 import ChuckWin from './ChuckWin'
 import { getChallenges } from '../api.js'
-import { HashRouter, Router, Route, Link } from 'react-router'
+import { HashRouter as Router, Route, Link } from 'react-router-dom'
 
 const chuckFacts = [
   'Chuck Norris was bitten by a cobra and after five days of excruciating pain... the cobra died.',
@@ -65,39 +65,42 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <div className='hearts'>
-          <img src='http://www.pngpix.com/wp-content/uploads/2016/03/Red-Heart-PNG-image.png' id='heart-1' />
-          <img src='http://www.pngpix.com/wp-content/uploads/2016/03/Red-Heart-PNG-image.png' id='heart-2' />
+      <Router>
+        <div>
+          <div className='hearts'>
+            <img src='http://www.pngpix.com/wp-content/uploads/2016/03/Red-Heart-PNG-image.png' id='heart-1' />
+            <img src='http://www.pngpix.com/wp-content/uploads/2016/03/Red-Heart-PNG-image.png' id='heart-2' />
+          </div>
+          <div className='page-box'>
+            <div className='header'>
+              <h1>Find Chuck!</h1>
+            </div>
+            <div className='blurb'>
+              <p>It's nearly Valentine's Day and your valentine Chuck Norris has run off. Follow the clues, search through the map, and find Chuck!</p>
+            </div>
+            {/* <NewMap map={this.state.currentChallenge.map} /> */}
+            <div id='container'>
+              <NewMap />
+            </div>
+            <Clue challenges={this.state.upcomingChallenges} />
+
+            {/* <button type='button' onClick={this.nextChallenge}>Cool Button</button> */}
+
+            {/* Button for new Quote */}
+            <div className='nextChuckFact'>
+              <button type='button' onClick={this.getChuckFact}>Chuck Facts</button>
+              <p>{this.state.nextChuckFact}</p>
+            </div>
+
+            <div>
+              <Link to="/win"><button type='button'>Win</button></Link>
+            </div>
+
+          </div>
+        <Route path='/win' component={ChuckWin} />
+
         </div>
-        <div className='page-box'>
-          <div className='header'>
-            <h1>Find Chuck!</h1>
-          </div>
-          <div className='blurb'>
-            <p>It's nearly Valentine's Day and your valentine Chuck Norris has run off. Follow the clues, search through the map, and find Chuck!</p>
-          </div>
-          {/* <NewMap map={this.state.currentChallenge.map} /> */}
-          <div id='container'>
-            <NewMap />
-          </div>
-          <Clue challenges={this.state.upcomingChallenges} />
-
-          {/* <button type='button' onClick={this.nextChallenge}>Cool Button</button> */}
-
-          {/* Button for new Quote */}
-          <div className='nextChuckFact'>
-            <button type='button' onClick={this.getChuckFact}>Chuck Facts</button>
-            <p>{this.state.nextChuckFact}</p>
-          </div>
-
-          {/* <div>
-             <button type='button'>Win</button>
-            </div> */}
-
-        </div>
-
-      </div>
+      </Router>
     )
   }
 }
