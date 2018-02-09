@@ -71,7 +71,10 @@ class App extends React.Component {
             <img src='http://www.pngpix.com/wp-content/uploads/2016/03/Red-Heart-PNG-image.png' id='heart-1' />
             <img src='http://www.pngpix.com/wp-content/uploads/2016/03/Red-Heart-PNG-image.png' id='heart-2' />
           </div>
+
           <div className='page-box'>
+          <Route path='/win' component={ChuckWin} />
+
             <div className='header'>
               <h1>Find Chuck!</h1>
             </div>
@@ -97,7 +100,6 @@ class App extends React.Component {
             </div>
 
           </div>
-        <Route path='/win' component={ChuckWin} />
 
         </div>
       </Router>
